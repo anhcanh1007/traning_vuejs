@@ -32,10 +32,17 @@
 
 <script>
 export default {
+  methods: {
+    onTestRef(){
+      console.log('test ref');
+    }
+  },
   name: 'HelloWorld',
   props: {
     msg: String
   }
+  
+
 }
 </script>
 
