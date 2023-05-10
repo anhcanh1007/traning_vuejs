@@ -1,0 +1,29 @@
+{
+    "transactions": [
+        {
+            "id" : 1,
+            "name" : "thanh toán tiền nhà",
+            "price" : 500000
+        },
+        {
+            "id" : 2,
+            "name" : "thanh toán tiền điện nước",
+            "price" : 300000
+        },
+        {
+            "id" : 3,
+            "name" : "đi siêu thị vinmart",
+            "price" : 200000
+        },
+        {
+            "id" : 4,
+            "name" : "đi mua sắm quần áo",
+            "price" : 100000
+        },
+        {
+            "id" : 5,
+            "name" : "đi du lịch",
+            "price" : 400000
+        }
+    ]
+}
