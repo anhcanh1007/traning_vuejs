@@ -1,9 +1,10 @@
 <template>
-  <Form></Form>
+  <base-nav></base-nav>
+  <router-view></router-view>
 </template>
 
 <script>
-import Form from "./components/Form.vue";
+import Nav from "./components/Nav.vue";
 export default {
   data() {
     return {
@@ -11,7 +12,10 @@ export default {
   },
   name: "App",
   components: {
-    Form,
+    BaseNav: Nav,
+  },
+  created(){
+    console.log()
   },
   methods: {
     
@@ -19,12 +23,3 @@ export default {
 };
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-</style>
