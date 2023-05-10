@@ -5,14 +5,18 @@
 </template>
 <script>
 export default {
-    components: {},
-    props: {},
-    data() {
-        return {};
+    props: {
+        theme: {
+            type: String,
+            default: "light",
+            required: false
+        }
     },
-    created() {},
-    methods: {},
-    mounted() {},
+   // eslint-disable-next-line vue/no-setup-props-destructure
+   setup({theme}, {emit}) {
+    console.log(theme);
+    console.log(emit);
+   }
 };
 </script>
 <style scoped>
