@@ -6,8 +6,9 @@ const store = createStore({
   state() {
     return {
       transaction: null,
-      transactions: [1, 2, 3, 4],
-    };
+      transactions: [],
+      error: null
+      };
   },
 
   //getters là nơi lọc dữ liệu để hiển thị ra component
@@ -22,6 +23,12 @@ const store = createStore({
     setTransaction(state, transactionPayload) {
       state.transaction = transactionPayload;
     },
+    setTransactions(state, transactionsPayload) {
+      state.transactions = transactionsPayload
+    },
+    setError(state, error) {
+      state.error = error
+    }
   },
 
   //actions là nơi lấy dữ liệu về từ api và gửi dữ liệu đó lên mutations
@@ -31,6 +38,22 @@ const store = createStore({
       const data = await res.json();
       commit("setTransaction", data);
     },
+
+    async fetchAllTransaction({commit}) {
+      try {
+        const response = await fetch("http://localhost:3000/transactions");
+
+        if (!response.ok) throw new Error("Something went wrong");
+
+        const data = await response.json();
+
+        commit("setTransactions", data);
+      } catch (err) {
+        commit("setError", err.message);
+      }
+    }
+
+
   },
 });
 

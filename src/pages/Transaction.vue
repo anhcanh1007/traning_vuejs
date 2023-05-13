@@ -12,19 +12,24 @@
       <h3>Price : {{ transacsiton.price }}</h3>
     </div>
   </div>
-  <div v-else-if="error">{{ error.message }}</div>
+  <div v-else-if="error">{{ error }}</div>
   <div v-else>Loading transactions</div>
 </template>
 
 <script>
-import useTransactions from '../uses/fetchTransactions';
+import { useStore } from 'vuex'
+import { computed } from 'vue';
 export default {
-  watch: {
-  },
   setup() {
-    const { transactions, error, fetchAll } = useTransactions();
-    fetchAll();
-    return { transactions, error };
+    const store = useStore()
+    
+    store.dispatch("fetchAllTransaction");
+
+    const transactions = computed(() => store.state.transactions);
+    const error = computed(() => store.state.error);
+
+    return { transactions, error }
+
   },
 };
 </script>

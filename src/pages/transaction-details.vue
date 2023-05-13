@@ -9,17 +9,30 @@
 </template>
 
 <script>
+import { useStore } from 'vuex'
+import { computed } from 'vue';
+import { useRoute } from 'vue-router';
 export default {
-  computed: {
-    transaction() {
-      return  this.$store.state.transaction
-    },
-    transactionsFiltered() {
-      return this.$store.getters.transactionsFiltered;
-    }
-  },
-  created() {
-    this.$store.dispatch("fetchTransaction", {id: this.$route.params.id})
-  },
+  setup() {
+    const store = useStore();
+    const route = useRoute();
+    store.dispatch("fetchTransaction", { id: route.params.id});
+
+    const transaction = computed(() => store.state.transaction)
+
+    return { transaction }
+  }
+
+  // computed: {
+  //   transaction() {
+  //     return  this.$store.state.transaction
+  //   },
+  //   transactionsFiltered() {
+  //     return this.$store.getters.transactionsFiltered;
+  //   }
+  // },
+  // created() {
+  //   this.$store.dispatch("fetchTransaction", {id: this.$route.params.id})
+  // },
 };
 </script>
