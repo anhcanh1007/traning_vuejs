@@ -10,15 +10,16 @@
 
 <script>
 export default {
-  data() {
-    return {
-      transaction: null,
-    };
+  computed: {
+    transaction() {
+      return  this.$store.state.transaction
+    },
+    transactionsFiltered() {
+      return this.$store.getters.transactionsFiltered;
+    }
   },
   created() {
-    fetch("http://localhost:3000/transactions/" + this.$route.params.id)
-      .then((response) => response.json())
-      .then((data) => (this.transaction = data));
+    this.$store.dispatch("fetchTransaction", {id: this.$route.params.id})
   },
 };
 </script>

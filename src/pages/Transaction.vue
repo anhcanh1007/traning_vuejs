@@ -19,6 +19,8 @@
 <script>
 import useTransactions from '../uses/fetchTransactions';
 export default {
+  watch: {
+  },
   setup() {
     const { transactions, error, fetchAll } = useTransactions();
     fetchAll();
